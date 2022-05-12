@@ -1,0 +1,25 @@
+# Black Jack Strat
+## Attribute
+This is aimed to flucatuate stocks. Market should not be bullish or completely bearish during executing this strat.
+The favorate situation is stock has reversive attribute which meaning even the price goes down in several days and breaks several threshold, it will finally come back at least one interval.
+If user us it as an aggresive strat, user should wait until price goes to a favor level. However, if user is conservatve, once price come back to the second last threshold.
+
+## Details
+### 1. Fixed interval
+For each stock, we calculate an interval (I) based on it's price and volatility. Then define the price when the first position (V) established as P0, we have:
+    Pn = P0 - I*2^(n-1) (n > 0)
+Pn will be the fixed price threshold at level n.
+
+Once price touches a new level, we need to increase our positions by V * 2^n.
+
+If stock price comes back from level n to level n-1 and we clean our position, the return will be a linear fucntion related to n, the total cost will be a exponential function related to n. This is why we want the stock to come back quickly to have a relative high efficiency.
+
+When applying this strat, make sure calcuate which level we can afford and make the decision that whether the stock will fall to that level.
+
+### 2. increased interval
+There are several ways to increase insterval when price goes down to a new level. The advantage of increasing interval is once the price come back, the return will be greater than fixed interval strat. But the disadvantage is it would miss the point when sell action should be trigerred, then the strat will be low efficient.
+
+This strat can keep PM's portfolio in the market even the market tanks for a long time comparing to fixed interval strat which would lose all money. 
+
+## Misc
+In the situation when PM can make positive pnl upon main indices, any stocks in the index which has beta > 1 should also profitable when appling this strat
