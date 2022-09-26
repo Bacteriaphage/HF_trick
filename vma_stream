@@ -1,3 +1,16 @@
 https://www.mellanox.com/products/software/accelerator-software/vma
 https://github.com/Mellanox/libvma/
 https://www.webopedia.com/insights/ipaddressing/
+
+
+ib test tool
+ping pong vma test:
+
+To run TCP ping-pong using VMA:
+
+Run the server by using: 
+
+# VMA_SPEC=latency LD_PRELOAD=libvma.so sockperf sr -i <server-ip> --tcp
+Run the client by using: 
+
+# VMA_SPEC=latency LD_PRELOAD=libvma.so sockperf pp -i <server-ip> --tcp –m 64
